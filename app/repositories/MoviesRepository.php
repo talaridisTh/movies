@@ -16,11 +16,49 @@ class MoviesRepository {
         return "https://www.youtube.com/watch?v=".$video["videos"]["results"][0]["key"];
 
     }
+    public  function getImdb($id)
+    {
+        $imdb = HTTP::withToken(config("services.tmdb.token"))
+            ->get("https://api.themoviedb.org/3/movie/$id")
+            ->json();
 
-    public function showByiD($id)
+
+        return "https://www.imdb.com/title/".$imdb["imdb_id"];
+
+    }
+    public  function getImdbActor($id)
+    {
+
+        $imdb = HTTP::withToken(config("services.tmdb.token"))
+            ->get("https://api.themoviedb.org/3/person/$id")
+            ->json();
+
+
+        return "https://www.imdb.com/name/".$imdb["imdb_id"];
+
+    }
+    public  function getActorMovies($id)
+    {
+
+        $movie =  HTTP::withToken(config("services.tmdb.token"))
+            ->get("https://api.themoviedb.org/3/person/$id/movie_credits")
+            ->json();
+
+
+        return Movie::randomMovie($movie['cast'],4);
+//        dd($test['cast']);
+
+
+
+//        return "https://www.imdb.com/name/".$imdb["imdb_id"];
+
+    }
+
+
+    public function showByiD($value,$id)
     {
         return HTTP::withToken(config("services.tmdb.token"))
-            ->get("https://api.themoviedb.org/3/movie/$id?&append_to_response=videos,images,casts")
+            ->get("https://api.themoviedb.org/3/$value/$id?&append_to_response=videos,images,casts")
             ->json();
 
     }

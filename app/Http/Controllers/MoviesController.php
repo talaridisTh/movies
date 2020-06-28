@@ -32,18 +32,40 @@ class MoviesController extends Controller {
 
     public function show($id)
     {
-        $similar = $this->movieRepository->showSimilarMovie($id,3);
-        $movie = $this->movieRepository->showByiD($id);
+        $similar = $this->movieRepository->showSimilarMovie($id, 3);
+        $movie = $this->movieRepository->showByiD("movie",$id);
         $genreMovies = $this->movieRepository->genreMovie();
 
+        return view("show", compact("movie", "genreMovies", "similar"));
+    }
 
-        return view("show", compact("movie", "genreMovies","similar"));
+    public function showActor($id)
+    {
+        $genreMovies = $this->movieRepository->genreMovie();
+        $actor = $this->movieRepository->showByiD("person",$id);
+        $actorMovies = $this->movieRepository->getActorMovies(3 );
+
+
+        return view("actor",compact("actor","genreMovies","actorMovies"));
     }
 
     public function showVideo($id)
     {
 
         return redirect($video = $this->movieRepository->getVideo($id));
+    }
+
+    public function showImdb($id)
+    {
+
+
+        return redirect($imdb = $this->movieRepository->getImdb($id));
+    }
+
+    public function showImdbActor($id)
+    {
+
+        return redirect($imdb = $this->movieRepository->getImdbActor($id));
     }
 
 }

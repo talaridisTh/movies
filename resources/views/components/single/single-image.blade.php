@@ -7,9 +7,10 @@
                 @if($loop->index<9)
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="single-image">
-                            <img class="img-fluid" src='https://image.tmdb.org/t/p/w500/{{$cast["file_path"]}}'
-                                 alt="">
-
+                            <a href="https://image.tmdb.org/t/p/w500/{{$cast["file_path"]}}">
+                                <img class="img-fluid"
+                                     src='https://image.tmdb.org/t/p/w500/{{$cast["file_path"]}}'
+                                     alt=""></a>
                         </div>
                     </div>
                 @endif

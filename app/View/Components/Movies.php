@@ -34,7 +34,7 @@ class Movies extends Component {
                                     <div class="manOfSteel"></div>
                                     <div class="overlay d-flex flex-column justify-content-around">
                                         <p>
-                                            <a class="font-weight-bold border p-2"  target="_blank" href="{{route('movies.video',$movie['id'])}}">View Trailer</a>
+                                            <a class="font-weight-bold border p-2"  target="_blank" href="{{App\Movie::pathVideo($movie)}}">View Trailer</a>
                                         </p>
                                         <p>
                                             <a class="font-weight-bold border p-2" href="{{App\Movie::path($movie)}}">View Details</a>

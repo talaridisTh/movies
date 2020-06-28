@@ -21,8 +21,14 @@ Auth::routes();
 
 Route::get("/", "MoviesController@index")->name("movies.index");
 Route::get("movie/{id}", "MoviesController@show")->name("movies.show");
+Route::get("actor/{id}", "MoviesController@showActor")->name("movies.actor");
 
 
 Route::get("movie/{id}/video", "MoviesController@showVideo")->name("movies.video");
+
+
+Route::get("movie/{id}/imdb", "MoviesController@showImdb")->name("movies.imdb");
+
+Route::get("actor/{id}/imdb", "MoviesController@showImdbActor")->name("actor.imdb");
 
 

@@ -8,6 +8,8 @@
 
     <x-single.single-image :movie="$movie"></x-single.single-image>
 
+
+
     <x-single.single-similar :similar="$similar" :genreMovies="$genreMovies"></x-single.single-similar>
 
 </x-master>
