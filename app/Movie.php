@@ -31,15 +31,14 @@ class Movie extends Model {
         return route('movies.imdb', $imdb['id']);
     }
 
-    public static function pathImdbActor($imdb)
+    public static function pathImdbActor($actor)
     {
 
-        return route('actor.imdb', $imdb['id']);
+        return route('actor.imdb', $actor['id']);
     }
 
     public static function actor($actor)
     {
-
         if (!$actor['deathday'])
         {
             return Carbon::parse($actor['birthday'])->format('d/m/Y')

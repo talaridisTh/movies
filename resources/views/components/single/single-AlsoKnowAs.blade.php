@@ -1,5 +1,3 @@
-{{--@php(dump($alsoKnowAs['cast']))--}}
-
 <section class="single-similar-movie">
     <hr class="style-one my-5">
     <div class="container-fluid">

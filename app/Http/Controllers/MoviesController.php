@@ -36,6 +36,7 @@ class MoviesController extends Controller {
         $movie = $this->movieRepository->showByiD("movie",$id);
         $genreMovies = $this->movieRepository->genreMovie();
 
+
         return view("show", compact("movie", "genreMovies", "similar"));
     }
 

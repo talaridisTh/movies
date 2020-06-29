@@ -12,7 +12,8 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick-theme.css"/>
 
-    <link href="{{ mix('css/style.css') }}" rel="stylesheet">
+{{--    <link href="{{ mix('css/style.css') }}" rel="stylesheet">--}}
+    <link href="/css/style.css" rel="stylesheet">
 
 </head>
 <body style="background-color: #3C3C3C;">

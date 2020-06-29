@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use http\Client\Response;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -50,6 +51,35 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        return parent::render($request, $exception);
+
+
+//        $response = [];
+
+        $statusCode = 500;
+        if (method_exists($exception, 'getStatusCode')) {
+            $statusCode = $exception->getStatusCode();
+        }
+
+        switch ($statusCode) {
+            case 404:
+                $response['error'] = 'Not Found';
+                break;
+
+            case 403:
+                $response['error'] = 'Forbidden';
+                break;
+
+            case 500:
+                return \Response::view('components.feature.errors.500',array(),500);
+                break;
+
+            default:
+                $response['error'] = $exception->getMessage();
+                break;
+        }
+
+
+
+        return response()->json($response, $statusCode);
     }
 }

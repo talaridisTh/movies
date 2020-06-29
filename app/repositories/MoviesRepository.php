@@ -7,77 +7,66 @@ use Illuminate\Support\Facades\Http;
 
 class MoviesRepository {
 
-    public  function getVideo($id)
+    public function getVideo($id)
     {
         $video = HTTP::withToken(config("services.tmdb.token"))
             ->get("https://api.themoviedb.org/3/movie/$id?&append_to_response=videos")
             ->json();
 
-        return "https://www.youtube.com/watch?v=".$video["videos"]["results"][0]["key"];
-
+        return "https://www.youtube.com/watch?v=" . $video["videos"]["results"][0]["key"];
     }
-    public  function getImdb($id)
+
+    public function getImdb($id)
     {
         $imdb = HTTP::withToken(config("services.tmdb.token"))
             ->get("https://api.themoviedb.org/3/movie/$id")
             ->json();
 
-
-        return "https://www.imdb.com/title/".$imdb["imdb_id"];
-
+        return "https://www.imdb.com/title/" . $imdb["imdb_id"];
     }
-    public  function getImdbActor($id)
+
+    public function getImdbActor($id)
     {
 
         $imdb = HTTP::withToken(config("services.tmdb.token"))
             ->get("https://api.themoviedb.org/3/person/$id")
             ->json();
 
-
-        return "https://www.imdb.com/name/".$imdb["imdb_id"];
-
+        return "https://www.imdb.com/name/" . $imdb["imdb_id"];
     }
-    public  function getActorMovies($id)
+
+    public function getActorMovies($id)
     {
 
-        $movie =  HTTP::withToken(config("services.tmdb.token"))
+        $movie = HTTP::withToken(config("services.tmdb.token"))
             ->get("https://api.themoviedb.org/3/person/$id/movie_credits")
             ->json();
 
-
-        return Movie::randomMovie($movie['cast'],4);
+        return Movie::randomMovie($movie['cast'], 4);
 //        dd($test['cast']);
-
-
-
 //        return "https://www.imdb.com/name/".$imdb["imdb_id"];
-
     }
 
-
-    public function showByiD($value,$id)
+    public function showByiD($value, $id)
     {
         return HTTP::withToken(config("services.tmdb.token"))
             ->get("https://api.themoviedb.org/3/$value/$id?&append_to_response=videos,images,casts")
             ->json();
-
     }
 
-    public  function showMovie($value, $num, $page = 1)
+    public function showMovie($value, $num, $page = 1)
     {
         return Movie::randomMovie(HTTP::withToken(config("services.tmdb.token"))
             ->get("https://api.themoviedb.org/3/movie/$value?page=$page")
             ->json()["results"], $num);
     }
 
-    public  function showSimilarMovie($value, $num, $page = 1)
+    public function showSimilarMovie($value, $num, $page = 1)
     {
         return Movie::randomMovie(HTTP::withToken(config("services.tmdb.token"))
             ->get("https://api.themoviedb.org/3/movie/$value/similar?page=$page")
             ->json()["results"], $num);
     }
-
-
 
     public function genreMovie()
     {
