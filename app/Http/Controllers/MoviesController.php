@@ -44,7 +44,7 @@ class MoviesController extends Controller {
     {
         $genreMovies = $this->movieRepository->genreMovie();
         $actor = $this->movieRepository->showByiD("person",$id);
-        $actorMovies = $this->movieRepository->getActorMovies(3 );
+        $actorMovies = $this->movieRepository->getActorMovies($id);
 
 
         return view("actor",compact("actor","genreMovies","actorMovies"));

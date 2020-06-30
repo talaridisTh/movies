@@ -62,7 +62,7 @@ class Handler extends ExceptionHandler
 
         switch ($statusCode) {
             case 404:
-                $response['error'] = 'Not Found';
+                return \Response::view('components.feature.errors.500',array(),404);
                 break;
 
             case 403:
