@@ -45,9 +45,11 @@ class MoviesController extends Controller {
         $genreMovies = $this->movieRepository->genreMovie();
         $actor = $this->movieRepository->showByiD("person",$id);
         $actorMovies = $this->movieRepository->getActorMovies($id);
+        $social = $this->movieRepository->getActorSocial($id);
 
 
-        return view("actor",compact("actor","genreMovies","actorMovies"));
+
+        return view("actor",compact("actor","genreMovies","actorMovies","social"));
     }
 
     public function showVideo($id)

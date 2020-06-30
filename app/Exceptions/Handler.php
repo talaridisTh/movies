@@ -54,6 +54,7 @@ class Handler extends ExceptionHandler
 
 
 //        $response = [];
+//        return parent::render($request, $exception);
 
         $statusCode = 500;
         if (method_exists($exception, 'getStatusCode')) {

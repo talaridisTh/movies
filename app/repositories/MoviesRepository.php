@@ -42,9 +42,20 @@ class MoviesRepository {
             ->get("https://api.themoviedb.org/3/person/$id/movie_credits")
             ->json();
 
-        return Movie::randomMovie($movie['cast'], 4);
-//        dd($test['cast']);
-//        return "https://www.imdb.com/name/".$imdb["imdb_id"];
+
+        return  $movie['cast']  ;
+
+
+    }
+    public function getActorSocial($id)
+    {
+
+       return  HTTP::withToken(config("services.tmdb.token"))
+            ->get("https://api.themoviedb.org/3/person/$id/external_ids")
+            ->json();
+
+
+
     }
 
     public function showByiD($value, $id)
