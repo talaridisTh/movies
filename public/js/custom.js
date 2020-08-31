@@ -135,7 +135,7 @@ $slickEl.slick({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\arxi-\OneDrive\Υπολογιστής\movies\resources\js\custom.js */"./resources/js/custom.js");
+module.exports = __webpack_require__(/*! C:\Users\arxi-\OneDrive\Υπολογιστής\darkpony\laravel\movies\resources\js\custom.js */"./resources/js/custom.js");
 
 
 /***/ })

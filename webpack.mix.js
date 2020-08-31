@@ -9,18 +9,3 @@ mix.js('resources/js/app.js', 'public/js/app.js')
 
 
 
-/node_modules
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
-.env
-.htaccess
-robots.txt
-.idea
-.env.backup
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
